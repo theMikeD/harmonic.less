@@ -1,0 +1,149 @@
+// Harmonic Typography ---------------------------------------------------------------------//
+// Automatically adjusts the line height, margins and font-sizes to correspond with 
+// the theory of harmonic scale in typography.
+// References and sources:
+//  http://lamb.cc/typograph/
+
+
+// 1. Set the bae font size and base line height
+@base-font-size: 16px;
+@base-line-height: 24px;
+
+// 2. Set the target font sizes for headings
+@h1-target-size: 28px;
+@h2-target-size: 24px;
+@h3-target-size: 20px;
+@h4-target-size: 18px;
+@h5-target-size: 16px;
+@h6-target-size: 14px;
+
+
+// Mixins to do all the math
+// Margins
+.md-harmonic-margin-top (@font-size)  {
+	margin-top: unit((@base-line-height / @font-size),em);
+}
+.md-harmonic-margin-bottom (@font-size) {
+	margin-bottom: 0;
+}
+
+// Line heights
+// When the target text size is bigger than line-height, double line-height
+.md-harmonic-line-height (@font-size) when (@font-size > @base-line-height){
+	line-height: unit((@base-line-height * 2 / @font-size),em);
+}
+.md-harmonic-line-height (@font-size) when (@font-size =< @base-line-height){
+	line-height: unit((@base-line-height / @font-size),em);
+}
+
+// font size conversion from px to em
+.md-harmonic-font-size (@font-size) {
+	font-size: unit((@font-size / @base-font-size),em);
+}
+
+// This vertically centers the text if the font size is bigger than the base line height
+.md-harmonic-centered-margin-top (@font-size)  {
+	margin-top: unit(( (@base-line-height / @font-size)/2),em);
+}
+.md-harmonic-centered-margin-bottom (@font-size) {
+	margin-bottom: unit(( (@base-line-height / @font-size)/2),em);
+}
+
+
+
+
+// Definitions
+p {
+	.md-harmonic-font-size(@base-font-size);
+	.md-harmonic-line-height(@base-font-size);
+	.md-harmonic-margin-top(@base-font-size);
+	.md-harmonic-margin-bottom(@base-font-size);
+}
+
+ul, ol {
+	.md-harmonic-font-size(@base-font-size);
+	.md-harmonic-line-height(@base-font-size);
+	.md-harmonic-margin-top(@base-font-size);
+	.md-harmonic-margin-bottom(@base-font-size);
+}
+
+
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+	.md-harmonic-margin-bottom(@base-font-size);
+}
+li {
+	.md-harmonic-font-size(@base-font-size);
+	.md-harmonic-line-height(@base-font-size);
+}
+
+// Description Lists
+dl {
+	.md-harmonic-margin-top(@base-font-size);
+	.md-harmonic-margin-bottom(@base-font-size);
+}
+dt, dd {
+	.md-harmonic-font-size(@base-font-size);
+	.md-harmonic-line-height(@base-font-size);
+}
+dd {
+}
+
+
+
+
+
+h1, 
+.h1, 
+.entry-title,
+.entry-title a{
+	.md-harmonic-font-size(@h1-target-size);
+	.md-harmonic-line-height(@h1-target-size);
+	.md-harmonic-margin-top(@h1-target-size);
+	.md-harmonic-margin-bottom(@h1-target-size);
+}
+h2, .h2 {
+	.md-harmonic-font-size(@h2-target-size);
+	.md-harmonic-line-height(@h2-target-size);
+	.md-harmonic-margin-top(@h2-target-size);
+	.md-harmonic-margin-bottom(@h2-target-size);
+}
+h3, .h3 {
+	.md-harmonic-font-size(@h3-target-size);
+	.md-harmonic-line-height(@h3-target-size);
+	.md-harmonic-margin-top(@h3-target-size);
+	.md-harmonic-margin-bottom(@h3-target-size);
+}
+h4, 
+.h4,
+.archive-title,
+.taxonomy-description h1,
+.widgettitle {
+	.md-harmonic-font-size(@h4-target-size);
+	.md-harmonic-line-height(@h4-target-size);
+	.md-harmonic-margin-top(@h4-target-size);
+	.md-harmonic-margin-bottom(@h4-target-size);
+}
+h5, .h5 {
+	.md-harmonic-font-size(@h5-target-size);
+	.md-harmonic-line-height(@h5-target-size);
+	.md-harmonic-margin-top(@h5-target-size);
+	.md-harmonic-margin-bottom(@h5-target-size);
+}
+h6, 
+.h6,
+.author-box h1,
+.sidebar h2 a {
+	.md-harmonic-font-size(@h6-target-size);
+	.md-harmonic-line-height(@h6-target-size);
+	.md-harmonic-margin-top(@h6-target-size);
+	.md-harmonic-margin-bottom(@h6-target-size);
+}
+.smaller {
+	font-size: .8em;
+}
+
+
