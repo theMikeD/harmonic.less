@@ -38,7 +38,7 @@
 
 // font size conversion from px to em
 .md-harmonic-font-size (@font-size) {
-	font-size: unit((@font-size / @base-font-size),em);
+	font-size: unit((@font-size / @base-font-size) * (@base-font-size / 16px),em);
 }
 
 // This vertically centers the text if the font size is bigger than the base line height
