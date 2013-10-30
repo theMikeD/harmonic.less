@@ -56,9 +56,12 @@
 p {
 	.md-harmonic-font-size(@base-font-size);
 	.md-harmonic-line-height(@base-font-size);
-	.md-harmonic-margin-top(@base-font-size);
 	.md-harmonic-margin-bottom(@base-font-size);
 }
+p + p {
+	.md-harmonic-margin-top(@base-font-size);
+}
+
 
 ul, ol {
 	.md-harmonic-font-size(@base-font-size);
